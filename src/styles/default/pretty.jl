@@ -967,7 +967,8 @@ function p_module(ds::DefaultStyle, cst::CSTParser.EXPR, s::State)
             add_node!(t, n, s, join_lines = true)
         end
     else
-        if s.opts.indent_submodule && parent_is(
+        if s.opts.indent_submodule === :module ||
+           s.opts.indent_submodule && parent_is(
             cst,
             n -> n !== nothing;
             ignore = n -> !(n.head === :module || n.head === :baremodule),

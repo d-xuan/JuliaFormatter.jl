@@ -192,7 +192,7 @@ normalize_line_ending(s::AbstractString, replacer = WINDOWS_TO_UNIX) = replace(s
         align_matrix::Bool = false,
         trailing_comma::Bool = false,
         trailing_zero::Bool = true,
-        indent_submodule::Bool = false,
+        indent_submodule::Union{Bool, Symbol} = false,
         separate_kwargs_with_semicolon::Bool = false,
         surround_whereop_typeparameters::Bool = true,
         variable_call_indent::Vector{String} = []
@@ -599,6 +599,36 @@ module B
 end
 
 d = 4
+
+end
+```
+
+When set to :module, *all* module(s) appearing in the same file will be indented.
+
+```julia
+module A
+a = 1
+
+module B
+b = 2
+end
+
+d = 4
+
+end
+```
+
+will be formatted to:
+
+```julia
+module A
+    a = 1
+
+    module B
+        b = 2
+    end
+
+    d = 4
 
 end
 ```

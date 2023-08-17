@@ -26,7 +26,7 @@ Base.@kwdef struct Options
     join_lines_based_on_source::Bool = false
     trailing_comma::Union{Bool,Nothing} = true
     trailing_zero::Bool = true
-    indent_submodule::Bool = false
+    indent_submodule::Union{Bool,Symbol} = false
     separate_kwargs_with_semicolon::Bool = false
     surround_whereop_typeparameters::Bool = true
     config_applied::Bool = false

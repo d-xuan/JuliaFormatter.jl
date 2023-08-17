@@ -432,6 +432,36 @@ d = 4
 end
 ```
 
+When set to :module, *all* module(s) appearing in the same file will be indented.
+
+```julia
+module A
+a = 1
+
+module B
+b = 2
+end
+
+d = 4
+
+end
+```
+
+will be formatted to:
+
+```julia
+module A
+    a = 1
+
+    module B
+        b = 2
+    end
+
+    d = 4
+
+end
+```
+
 ### `separate_kwargs_with_semicolon`
 
 > default: `false`
